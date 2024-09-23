@@ -1,4 +1,6 @@
 const express = require('express');
+const { Heap } = require('heap-js');
+
 const app = express();
 const PORT = process.env.PORT || 8000;
 
@@ -10,7 +12,14 @@ const balance = require('./routes/balance');
 // Define Middleware
 app.use(express.json());
 
+// Create storage structures
+global.total = 0;
+global.transactionHeap = new Heap((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
 // Use router for each route
+app.use('/', (req, res) => {
+    res.send('Welcome to the Points API');
+});
 app.use('/add', add);
 app.use('/spend', spend);
 app.use('/balance', balance);
