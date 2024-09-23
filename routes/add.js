@@ -6,7 +6,7 @@ router.post('/', (req, res) => {
     total += points;
     global.transactionHeap.push({ payer, points, timestamp });
     console.log(global.transactionHeap);
-    res.status(200);
+    res.status(200).send(total.toString());
 });
 
 module.exports = router;
