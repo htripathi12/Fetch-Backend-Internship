@@ -3,6 +3,8 @@ const router = express.Router();
 
 router.post('/', (req, res) => {
     const { points } = req.body;
+    let response = [];
+
     if (global.total - points < 0) {
         res.status(400).send('Insufficient funds');
         return;
