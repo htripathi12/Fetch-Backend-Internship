@@ -15,6 +15,7 @@ app.use(express.json());
 // Create storage structures
 global.total = 0;
 global.transactionHeap = new Heap((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+global.balances = {};
 
 // Use router for each route
 app.use('/add', add);
