@@ -1,0 +1,47 @@
+1. Why did you choose the tools, libraries, and language you used for the coding exercise?
+
+I chose Express.js for this project because it's a lightweight, efficient framework that 
+excels at building RESTful APIs. It offers better routing, middleware integration, and 
+a clean structure, which aligns well with my experience on past projects. JavaScript, in 
+combination with Express, is ideal for this task due to its superior asynchronous capabilities 
+and strong server-side support. Using Node.js provides us access to a larger ecosystem of packages 
+and built-in support, especially for handling concurrency for the future.
+
+2. What are the advantages and disadvantages of your solution?
+
+One potential disadvantage of my solution is the use of global variables to store the transactions, 
+balances, and total points. While this provides easy accessibility from any file in the API, it is 
+not ideal for scenarios involving multiple users or concurrent threads. This could lead to race 
+conditions and inconsistent data handling. Given the constraints of the exercise I allowed it because 
+it got the job done, but in a production setting, I would switch to using a database or in-memory caching 
+system to properly handle concurrency.
+
+One of the advantages of my solution is its simplicity and directness. By using global variables, 
+I was able to avoid the overhead of setting up a more complex data storage mechanism like a separate state 
+class, which made the implementation more straightforward. Additionally, my use of Express Router makes the 
+code modular and easy to extend, allowing for engineers to add more routes and functionality depending on 
+what is needed. The heap provides efficient O(log n) time complexity for both insertion and removal, 
+making it far superior to using an array where finding or removing the oldest transaction could take O(n) 
+time. This is because every time you insert or remove from the array, you need to find the correct sorted position
+for the given timestamps. With a min heap this algorithm is not only done for us using the heap-js library, we 
+it's also quicker. This ensures transactions are handled in the correct order without performance degradation 
+as the data grows.
+
+3. What has been a favorite school/personal project thus far? What about it that challenged you?
+
+One of my favorite personal projects has been Chess Nexus, as it combines my passion for chess 
+with my technical skills to solve the studying problem in the chess space. The project presented 
+numerous challenges, starting with the lack of documentation for Stockfish.js and its integration
+using the UCI protocol. I had to figure out how to communicate with the chess engine largely through
+raw research. Another major hurdle was the database; initially I used local file storage since I couldn’t
+afford a database, which caused my project to break when I pushed it to production due to GitHub LFS 
+only returning file pointers. I also had to ensure the login system was secure, requiring a deep dive 
+into JWTs, session storage, cookies, and user contexts. Coding the chess logic — handling legal moves, 
+PGN parsing, and edge conditions like checkmate — was particularly tough, even with the chess.js library. 
+Lastly, designing the frontend was a huge challenge as I’m not a graphic designer, so I had to handle 
+color schemes, animations, and overall user flow with limited experience.
+
+Despite all these challenges, I can say with confidence that I've never had a project that was both 
+so frustrating and so fun at the same time. It was incredibly fulfilling to push through the difficulties, 
+and because of that I’m proud of what I have accomplished. The experiences have taught me a lot and it's 
+still the most rewarding project I’ve worked on.
