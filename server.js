@@ -12,10 +12,12 @@ const balance = require('./routes/balance');
 // Define Middleware
 app.use(express.json());
 
-// Create storage structures
-global.total = 0;
-global.transactionHeap = new Heap((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-global.balances = {};
+global.total = 0; // Declare total as a global variable
+// Min heap manages transactions by timestamp for /spend
+global.transactionHeap = new Heap(
+    (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
+);
+global.balances = {}; // Keeps track of points per payer for /balance route
 
 // Use router for each route
 app.use('/add', add);
